@@ -1,14 +1,17 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function Filter({ category, onCategoryChange }) {
   return (
     <div className="Filter">
+      <label htmlFor="filter">Filter by category:</label>
       <select
+        id="filter"
         name="filter"
         value={category}
         onChange={(e) => onCategoryChange(e.target.value)}
       >
-        <option value="All">Filter by category</option>
+        <option value="All">All</option>
         <option value="Produce">Produce</option>
         <option value="Dairy">Dairy</option>
         <option value="Dessert">Dessert</option>
@@ -16,5 +19,10 @@ function Filter({ category, onCategoryChange }) {
     </div>
   );
 }
+
+Filter.propTypes = {
+  category: PropTypes.string.isRequired,
+  onCategoryChange: PropTypes.func.isRequired
+};
 
 export default Filter;
